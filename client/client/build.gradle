@@ -65,10 +65,12 @@ android {
             // Set DEFAULT_OWNERSHIP to null if no overiding is needed. Other possible values are,
             // BYOD or COPE. If you are using the mutual SSL authentication
             // This value must be set to a value other than null.
-            buildConfigField "String", "DEFAULT_OWNERSHIP", "null"
+            //TODO:Janak ownership <default:null>
+            buildConfigField "String", "DEFAULT_OWNERSHIP", "\"COSU\""
             //DEFAULT_HOST - Hardcode the server host to avoid having the user type it during
             //enrollment. If the user must type the hostname/IP during enrollment, leave it as null.
-            buildConfigField "String", "DEFAULT_HOST", "null"
+            //TODO:Janak change ip <default:null>
+            buildConfigField "String", "DEFAULT_HOST", "\"192.168.1.5:8280\""
             // APP_MANAGER_HOST: If the App store host is different from the DEFAULT_HOST
             // change this value.
             buildConfigField "String", "APP_MANAGER_HOST", "null"
@@ -157,10 +159,10 @@ android {
             // COSU related configurations.
             // By enabling this button, data wipe can be performed on a device without having to
             // issue a remote wipe operation.
-            buildConfigField "boolean", "DISPLAY_WIPE_DEVICE_BUTTON", "true"
+            buildConfigField "boolean", "DISPLAY_WIPE_DEVICE_BUTTON", "false"
             // Under COSU mode, this will enable an area in the screen to exit from screen pinned
             // mode. This MUST be set to false in production, if COSU is used.
-            buildConfigField "boolean", "COSU_SECRET_EXIT", "true"
+            buildConfigField "boolean", "COSU_SECRET_EXIT", "false"
 
             buildConfigField "String", "EULA_TITLE", "\"POLICY AGREEMENT\""
 

@@ -198,18 +198,23 @@ public class APIController implements TokenCallBack {
 		} catch (IDPTokenManagerException e) {
 			Log.e(TAG, "Failed to retrieve HTTP client", e);
 		}
-
 		StringRequest request = new StringRequest(requestMethod, apiUtilities.getEndPoint(),
 		                                          new Response.Listener<String>() {
 			                                          @Override
 			                                          public void onResponse(String response) {
 				                                          Log.d(TAG, response);
+														  //Janak
+														  Log.d(TAG, "response(sendStringRequest): "+response);
 			                                          }
 		                                          },
 		                                          new Response.ErrorListener() {
 			                                          @Override
 			                                          public void onErrorResponse(VolleyError error) {
 				                                          Log.e(TAG, error.toString());
+														  //Janak
+														  Log.e(TAG, "error(sendStringRequest): "+error.toString());
+														  error.printStackTrace();
+
 			                                          }
 		                                          })
 
@@ -278,12 +283,17 @@ public class APIController implements TokenCallBack {
                                                           @Override
                                                           public void onResponse(JSONObject response) {
                                                               Log.d(TAG, response.toString());
+															  //Janak
+															  Log.d(TAG, "response(sendJsonObjectRequest): "+response);
                                                           }
                                                       },
                                                       new Response.ErrorListener() {
                                                           @Override
                                                           public void onErrorResponse(VolleyError error) {
                                                               Log.e(TAG, error.toString());
+															  //Janak
+															  Log.e(TAG, "response(sendJsonObjectRequest): "+error.toString());
+															  error.printStackTrace();
                                                           }
                                                       })
 
@@ -347,12 +357,17 @@ public class APIController implements TokenCallBack {
 				                                @Override
 				                                public void onResponse(JSONArray response) {
 					                                Log.d(TAG, response.toString());
+													//Janak
+													Log.d(TAG, "response(sendJsonArrayRequest): "+response);
 				                                }
 			                                },
 			                                new Response.ErrorListener() {
 				                                @Override
 				                                public void onErrorResponse(VolleyError error) {
 					                                Log.e(TAG, error.toString());
+													//Janak
+													Log.e(TAG, "response(sendJsonArrayRequest): "+error.toString());
+													error.printStackTrace();
 				                                }
 			                                })
 
