@@ -145,9 +145,6 @@ public class DynamicClientManager implements APIResultCallBack {
                                                           @Override
                                                           public void onErrorResponse(VolleyError error) {
                                                               Log.d(TAG, error.toString());
-                                                              //Janak
-                                                              Log.d(TAG, "onErrorResponse(VolleyError error)");
-                                                              error.printStackTrace();
                                                           }
                                                       })
 
@@ -155,9 +152,6 @@ public class DynamicClientManager implements APIResultCallBack {
                 @Override
                 protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
                     String result = new String(response.data);
-                    //Janak
-                    Log.d(TAG, "Result :" + result);
-
                     if(org.wso2.emm.agent.proxy.utils.Constants.DEBUG_ENABLED) {
                         if(result != null && !result.isEmpty()) {
                             Log.d(TAG, "Result :" + result);
@@ -167,11 +161,6 @@ public class DynamicClientManager implements APIResultCallBack {
                     responseParams.put(org.wso2.emm.agent.proxy.utils.Constants.SERVER_RESPONSE_BODY, result);
                     responseParams.put(org.wso2.emm.agent.proxy.utils.Constants.SERVER_RESPONSE_STATUS, String.valueOf(
                             response.statusCode));
-
-                    //Janak
-                    Log.d(TAG, "responseParams :" + responseParams.toString());
-
-
                     apiResultCallback.onReceiveAPIResult(responseParams, requestCode);
                     return super.parseNetworkResponse(response);
                 }

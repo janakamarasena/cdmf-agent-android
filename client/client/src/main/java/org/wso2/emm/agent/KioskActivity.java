@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.telecom.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -42,9 +41,7 @@ public class KioskActivity extends Activity {
     int kioskExit;
 
     static String packageName = null;
-    //janak
-    //TODO: janak-check where to include the variable
-    String kioskAppPackageNameKey ="kioskAppPackageName";
+    private String kioskAppPackageNameKey ="kioskAppPackageName";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,13 +137,10 @@ public class KioskActivity extends Activity {
         }
     }
 
-    //Janak
-    private void launchKioskAppIfExists(){
-        Log.d("KioskActivity","launchKioskAppIfExists()" );
+    /*Checks whether there is an already installed app and if exists the app will be launched*/
+    private void launchKioskAppIfExists() {
         packageName = Preference.getString(context.getApplicationContext(), kioskAppPackageNameKey);
-        Log.d("KioskActivity","packageName: "+packageName );
-
-        if (packageName!=null&&!packageName.equals("")) {
+        if (packageName != null && !packageName.equals("")) {
             textViewLaunch.setVisibility(View.VISIBLE);
             Intent launchIntent = getApplicationContext().getPackageManager()
                     .getLaunchIntentForPackage(packageName);
@@ -173,8 +167,8 @@ public class KioskActivity extends Activity {
                             DevicePolicyManager.PERMISSION_GRANT_STATE_GRANTED);
                 }
             }
-
-            Preference.putString(KioskActivity.this.context.getApplicationContext(), kioskAppPackageNameKey, packageName);
+            Preference.putString(KioskActivity.this.context.getApplicationContext(),
+                    kioskAppPackageNameKey, packageName);
             launchKioskAppIfExists();
         }
     }

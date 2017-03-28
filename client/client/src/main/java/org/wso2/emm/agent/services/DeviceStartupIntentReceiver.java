@@ -27,7 +27,6 @@ import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.wso2.emm.agent.AgentReceptionActivity;
 import org.wso2.emm.agent.AndroidAgentException;
 import org.wso2.emm.agent.R;
 import org.wso2.emm.agent.ServerDetails;
@@ -60,12 +59,8 @@ public class DeviceStartupIntentReceiver extends BroadcastReceiver {
 			registerEvent.register();
 		}
 
-		//Janak
-		Log.d(TAG,"onReceive" );
 		if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
-			Log.d(TAG, "(intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED))");
 			if(Constants.DEFAULT_OWNERSHIP == Constants.OWNERSHIP_COSU) {
-				Log.d(TAG, "(Constants.DEFAULT_OWNERSHIP == Constants.OWNERSHIP_COSU)");
 				Intent i = new Intent(context, ServerDetails.class);
 				i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				context.startActivity(i);

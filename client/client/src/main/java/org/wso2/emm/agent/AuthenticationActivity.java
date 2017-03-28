@@ -92,7 +92,6 @@ public class AuthenticationActivity extends SherlockActivity implements APIAcces
 	private ProgressDialog progressDialog;
 	private LinearLayout loginLayout;
 
-	//janak
 	private int kioskExit;
 	private LinearLayout footer;
 
@@ -214,26 +213,23 @@ public class AuthenticationActivity extends SherlockActivity implements APIAcces
 			finish();
 		}
 
+        footer = (LinearLayout)findViewById(R.id.footer);
+		if (Constants.COSU_SECRET_EXIT) {
+			footer.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
 
-		//Janak
-		footer = (LinearLayout)findViewById(R.id.footer);
-        if(Constants.COSU_SECRET_EXIT) {
-            if (Constants.COSU_SECRET_EXIT) {
-                footer.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+					kioskExit++;
+					if (kioskExit == 6) {
+						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+							stopLockTask();
+						}
+						finish();
+					}
+				}
+			});
+		}
 
-                        kioskExit++;
-                        if (kioskExit == 6) {
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                stopLockTask();
-                            }
-                            finish();
-                        }
-                    }
-                });
-            }
-        }
 	}
 
 	private OnClickListener onClickAuthenticate = new OnClickListener() {

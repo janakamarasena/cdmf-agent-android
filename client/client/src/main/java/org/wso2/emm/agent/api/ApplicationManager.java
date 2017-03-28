@@ -693,8 +693,6 @@ public class ApplicationManager {
      * @param url - APK Url should be passed in as a String.
      */
     private void downloadApp(String url) {
-        //janak
-        Log.d(TAG,"downloadApp URL: "+url);
         RequestQueue queue = null;
         try {
             queue = ServerUtilities.getCertifiedHttpClient();
@@ -772,8 +770,6 @@ public class ApplicationManager {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Log.e(TAG, error.toString());
-                    //Janak
-                    error.printStackTrace();
                     Preference.putString(context, context.getResources().getString(
                             R.string.app_install_status), context.getResources().getString(
                             R.string.app_status_value_download_failed));
